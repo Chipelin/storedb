@@ -1,5 +1,5 @@
 CREATE SCHEMA IF NOT EXISTS `Storedb` ;
-USE `Storedb1` ;
+USE `Storedb` ;
 
 
 CREATE TABLE IF NOT EXISTS `Storedb`.`Category` (
@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS `Storedb`.`Product` (
   `description` VARCHAR(45) NULL DEFAULT NULL,
   `is_active` TINYINT NOT NULL COMMENT '\n',
   PRIMARY KEY (`id`),
-  INDEX `main_category_idx` (`main_category` ASC) VISIBLE,
-  INDEX `main_image_idx` (`main_image` ASC) VISIBLE,
+  INDEX `main_category_idx` (`main_category` ASC),
+  INDEX `main_image_idx` (`main_image` ASC),
   CONSTRAINT `main_category`
     FOREIGN KEY (`main_category`)
     REFERENCES `Storedb`.`Category` (`id`)
@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `Storedb`.`Product_Category` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+
 INSERT INTO `Storedb`.`Category` (`id`, `name`, `description`) VALUES (1, 'cat1', 'cat1 description');
 INSERT INTO `Storedb`.`Category` (`id`, `name`, `description`) VALUES (2, 'cat2', 'cat2 description');
 INSERT INTO `Storedb`.`Category` (`id`, `name`, `description`) VALUES (3, 'cat3', 'cat3 description');
@@ -79,6 +80,8 @@ INSERT INTO `Storedb`.`Images` (`id`, `name`, `path`, `alt`) VALUES (1, 'img1', 
 INSERT INTO `Storedb`.`Images` (`id`, `name`, `path`, `alt`) VALUES (2, 'img2', 'path-to-img2', 'alt2');
 INSERT INTO `Storedb`.`Images` (`id`, `name`, `path`, `alt`) VALUES (3, 'img3', 'path-to-img3', 'alt3');
 INSERT INTO `Storedb`.`Product` (`id`, `name`, 'main_category', 'main_image', `count`, `price`, `discountprice`, `promoprice`, `description`, 'is_active') VALUES (1, 'product1', 1, 1 10, 1, 56, 56, 'desc', 1);
+
+
 
 
 

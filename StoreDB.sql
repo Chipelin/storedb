@@ -30,9 +30,10 @@ CREATE TABLE IF NOT EXISTS `Storedb`.`Product` (
   `discountprice` FLOAT NULL DEFAULT NULL,
   `currentprice` FLOAT NULL DEFAULT NULL,
   `description` VARCHAR(45) NULL DEFAULT NULL,
+  `is_active` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `main_category_idx` (`main_category` ASC),
-  INDEX `main_image_idx` (`main_image` ASC),
+  INDEX `main_category_idx` (`main_category` ASC) VISIBLE,
+  INDEX `main_image_idx` (`main_image` ASC) VISIBLE,
   CONSTRAINT `main_category`
     FOREIGN KEY (`main_category`)
     REFERENCES `Storedb`.`Category` (`id`)
@@ -84,7 +85,7 @@ INSERT INTO `Storedb`.`Category` (`id`, `name`, `description`) VALUES (3, 'cat3'
 INSERT INTO `Storedb`.`Images` (`id`, `name`, `path`, `alt`) VALUES (1, 'img1', 'path\\to\\img', 'alt1');
 INSERT INTO `Storedb`.`Images` (`id`, `name`, `path`, `alt`) VALUES (2, 'img2', 'path\\to\\img2', 'alt2');
 INSERT INTO `Storedb`.`Images` (`id`, `name`, `path`, `alt`) VALUES (3, 'img3', 'path\\to\\img3', 'alt3');
-INSERT INTO `Storedb`.`Product` (`id`, `name`, 'main_category', 'main_image', `count`, `baseprice`, `discountprice`, `currentprice`, `description`) VALUES (1, 'product1', 1, 1 10, 1, 56, 56,  'desc');
+INSERT INTO `Storedb`.`Product` (`id`, `name`, 'main_category', 'main_image', `count`, `baseprice`, `discountprice`, `currentprice`, `description`, 'is_active') VALUES (1, 'product1', 1, 1 10, 1, 56, 56, 'desc', 1);
 
 
 
